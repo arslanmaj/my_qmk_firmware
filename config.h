@@ -16,7 +16,7 @@
 
 #pragma once
 #define TAPPING_TERM 200
-#define TAPPING_TOGGLE 2
+// #define TAPPING_TOGGLE 2
 // #define PERMISSIVE_HOLD
 // #define IGNORE_MOD_TAP_INTERRUPT
 // #define TAPPING_FORCE_HOLD
