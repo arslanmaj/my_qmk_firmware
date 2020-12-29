@@ -30,14 +30,12 @@
 
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
-  QMKBEST = SAFE_RANGE, // Key that sends 'QMKBEST' macro
   FN_CTAD = SAFE_RANGE, // Key that sends Ctrl + alt + delete
   FN_CAPS = SAFE_RANGE, // Special caps lock layer switching functionality
   FN_YKEY, // Key that sends Home + Shift (down) + End + Shift (up)
   FN_ALF4, // Key that sends Alt + F4
   FN_EKEY, // Key that sends Shift + F10
-  FN_TAB4, // Key that sends Tab 4 times
-  QMKURL
+  FN_TAB4  // Key that sends Tab 4 times
 };
 // Define layers
 #define _DEF 0
@@ -269,39 +267,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         SEND_STRING(SS_DOWN(X_RSHIFT));
         SEND_STRING(SS_TAP(X_END));
         SEND_STRING(SS_UP(X_RSHIFT));
-      } else {
-        // when keycode QMKURL is released
-      }
+      } else {}
       break;
     case FN_ALF4:
       if (record->event.pressed) {
-        // Send Alt (down) + F4 + Alt (up)
-        // SEND_STRING("https://qmk.fml/" SS_TAP(X_ENTER));
-        // SEND_STRING(SS_TAP(X_HOME) SS_DOWN(X_SHIFT) SS_TAP(X_END) SS_UP(X_SHIFT));
         SEND_STRING(SS_DOWN(X_LALT));
         SEND_STRING(SS_TAP(X_F4));
         SEND_STRING(SS_UP(X_LALT));
-      } else {
-        // when keycode QMKURL is released
-      }
+      } else {}
       break;
     case FN_EKEY:
       if (record->event.pressed) {
-        // Send Alt (down) + F4 + Alt (up)
-        // SEND_STRING("https://qmk.fml/" SS_TAP(X_ENTER));
-        // SEND_STRING(SS_TAP(X_HOME) SS_DOWN(X_SHIFT) SS_TAP(X_END) SS_UP(X_SHIFT));
         SEND_STRING(SS_DOWN(X_RSHIFT));
         SEND_STRING(SS_TAP(X_F10));
         SEND_STRING(SS_UP(X_RSHIFT));
-      } else {
-        // when keycode QMKURL is released
-      }
+      } else {}
       break;
     case FN_TAB4:
       if (record->event.pressed) {
-        // Send Alt (down) + F4 + Alt (up)
-        // SEND_STRING("https://qmk.fml/" SS_TAP(X_ENTER));
-        // SEND_STRING(SS_TAP(X_HOME) SS_DOWN(X_SHIFT) SS_TAP(X_END) SS_UP(X_SHIFT));
         SEND_STRING(SS_DOWN(X_TAB));
         SEND_STRING(SS_UP(X_TAB));
         SEND_STRING(SS_DOWN(X_TAB));
@@ -310,9 +293,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         SEND_STRING(SS_UP(X_TAB));
         SEND_STRING(SS_DOWN(X_TAB));
         SEND_STRING(SS_UP(X_TAB));
-      } else {
-        // when keycode QMKURL is released
-      }
+      } else {}
       break;
   }
   return true;
