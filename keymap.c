@@ -30,12 +30,12 @@
 
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
-  FN_CTAD = SAFE_RANGE, // Key that sends Ctrl + alt + delete
-  FN_CAPS = SAFE_RANGE, // Special caps lock layer switching functionality
-  FN_YKEY, // Key that sends Home + Shift (down) + End + Shift (up)
-  FN_ALF4, // Key that sends Alt + F4
-  FN_EKEY, // Key that sends Shift + F10
-  FN_TAB4  // Key that sends Tab 4 times
+    FN_CTAD = SAFE_RANGE, // Key that sends Ctrl + alt + delete
+    FN_CAPS = SAFE_RANGE, // Special caps lock layer switching functionality
+    FN_YKEY, // Key that sends Home + Shift (down) + End + Shift (up)
+    FN_ALF4, // Key that sends Alt + F4
+    FN_EKEY, // Key that sends Shift + F10
+    FN_TAB4  // Key that sends Tab 4 times
 };
 // Define layers
 #define _DEF 0
@@ -63,15 +63,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_DEF] = LAYOUT_65_ansi(
   KC_ESC,  KC_1,    KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC, KC_HOME ,\
   FN_TAB,  KC_Q,    KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS, KC_PGUP,\
-  LT(5, KC_ESC),    KC_A,    KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,  KC_PGDN,\
+  LT(_FKL, KC_ESC),    KC_A,    KC_S,   KC_D,   KC_F,   KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,  KC_PGDN,\
   KC_LSFT, KC_Z,    KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,           KC_UP,  KC_DEL,\
-  KC_LCTL, KC_LGUI, KC_LALT,                LT(1, KC_SPC),          KC_RALT,   KC_RALT, KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT),
+  KC_LCTL, KC_LGUI, KC_LALT,                LT(_FUN, KC_SPC),          MO(_NUM),   KC_RALT, KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT),
 
 [_FUN] = LAYOUT_65_ansi(
    KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, KC_F12, _______, _______,\
   _______, FN_CTL1, FN_CTL2, FN_CTL3, FN_CTL4, _______, FN_YKEY, KC_PGUP, KC_UP,   KC_PGDN, KC_BSPC, _______, _______, KC_BSPC, _______,\
    KC_GRV, FN_TAB4, _______, FN_ATAB, FN_CTL0, FN_CSH0, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, FN_CTLW, FN_CTST,          _______, KC_MPLY,\
-  _______, FN_EKEY, FN_ALF4, _______, _______, _______, KC_END,  KC_DEL, _______,  _______, _______,   TT(4),          KC_VOLU, KC_MUTE,\
+  _______, FN_EKEY, FN_ALF4, _______, _______, _______, KC_END,  KC_DEL, _______,  _______, _______, _______,          KC_VOLU, KC_MUTE,\
   _______, _______, _______,                _______,                               _______, _______, KC_RCTL, KC_MPRV, KC_VOLD, KC_MNXT),
 
 [_MOU] = LAYOUT_65_ansi(
@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12, _______, _______, _______, _______, _______, _______, _______, _______,\
     _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12, KC_BSPC, _______,\
     _______, FN_TAB4, _______, FN_ATAB, FN_CTL0, FN_FKL5, _______, _______, _______, _______, FN_CTLW, FN_CTST,          _______, _______,\
-    _______, FN_EKEY, FN_ALF4, _______, _______, _______, _______, _______, _______, _______, _______,   MO(4),          _______, _______,\
+    _______, FN_EKEY, FN_ALF4, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,\
     _______, _______, _______,                _______,                          _______,  _______, _______, _______, _______, _______),
 
 };
