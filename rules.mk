@@ -1,2 +1,2 @@
-TAP_DANCE_ENABLE = yes      # Enable Tap Dance
+## TAP_DANCE_ENABLE = yes      # Enable Tap Dance
 EXTRAFLAGS += -flto
