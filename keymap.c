@@ -102,46 +102,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-
 bool process_record_user(uint16_t keycode , keyrecord_t *record) {
-  switch (keycode) {
-    case FN_YKEY:
-      if (record->event.pressed) {
-        // Send Home + Shift (down) + End + Shift (up)
-        // SEND_STRING("https://qmk.fml/" SS_TAP(X_ENTER));
-        // SEND_STRING(SS_TAP(X_HOME) SS_DOWN(X_SHIFT) SS_TAP(X_END) SS_UP(X_SHIFT));
-        SEND_STRING(SS_TAP(X_HOME));
-        SEND_STRING(SS_DOWN(X_RSHIFT));
-        SEND_STRING(SS_TAP(X_END));
-        SEND_STRING(SS_UP(X_RSHIFT));
-      } else {}
+    switch (keycode) {
+        case FN_YKEY:
+            if (record->event.pressed) {
+                // Send Home + Shift (down) + End + Shift (up)
+                SEND_STRING(SS_TAP(X_HOME));
+                SEND_STRING(SS_DOWN(X_RSHIFT));
+                SEND_STRING(SS_TAP(X_END));
+                SEND_STRING(SS_UP(X_RSHIFT));
+            } else {}
+            break;
+        case FN_ALF4:
+            if (record->event.pressed) {
+                SEND_STRING(SS_DOWN(X_LALT));
+                SEND_STRING(SS_TAP(X_F4));
+                SEND_STRING(SS_UP(X_LALT));
+            } else {}
       break;
-    case FN_ALF4:
-      if (record->event.pressed) {
-        SEND_STRING(SS_DOWN(X_LALT));
-        SEND_STRING(SS_TAP(X_F4));
-        SEND_STRING(SS_UP(X_LALT));
-      } else {}
+        case FN_EKEY:
+            if (record->event.pressed) {
+                SEND_STRING(SS_DOWN(X_RSHIFT));
+                SEND_STRING(SS_TAP(X_F10));
+                SEND_STRING(SS_UP(X_RSHIFT));
+            } else {}
       break;
-    case FN_EKEY:
-      if (record->event.pressed) {
-        SEND_STRING(SS_DOWN(X_RSHIFT));
-        SEND_STRING(SS_TAP(X_F10));
-        SEND_STRING(SS_UP(X_RSHIFT));
-      } else {}
-      break;
-    case FN_TAB4:
-      if (record->event.pressed) {
-        SEND_STRING(SS_DOWN(X_TAB));
-        SEND_STRING(SS_UP(X_TAB));
-        SEND_STRING(SS_DOWN(X_TAB));
-        SEND_STRING(SS_UP(X_TAB));
-        SEND_STRING(SS_DOWN(X_TAB));
-        SEND_STRING(SS_UP(X_TAB));
-        SEND_STRING(SS_DOWN(X_TAB));
-        SEND_STRING(SS_UP(X_TAB));
-      } else {}
-      break;
-  }
+        case FN_TAB4:
+            if (record->event.pressed) {
+                SEND_STRING(SS_DOWN(X_TAB));
+                SEND_STRING(SS_UP(X_TAB));
+                SEND_STRING(SS_DOWN(X_TAB));
+                SEND_STRING(SS_UP(X_TAB));
+                SEND_STRING(SS_DOWN(X_TAB));
+                SEND_STRING(SS_UP(X_TAB));
+                SEND_STRING(SS_DOWN(X_TAB));
+                SEND_STRING(SS_UP(X_TAB));
+              } else {}
+              break;
+    }
   return true;
 }
