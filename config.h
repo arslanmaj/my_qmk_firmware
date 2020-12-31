@@ -16,6 +16,11 @@
 
 #pragma once
 #define TAPPING_TERM 200
+// Leader key
+#define LEADER_TIMEOUT 750
+#define LEADER_PER_KEY_TIMING 500
+#define USB_POLLING_INTERVAL_MS 5
+
 // #define TAPPING_TOGGLE 2
 // #define PERMISSIVE_HOLD
 // #define IGNORE_MOD_TAP_INTERRUPT

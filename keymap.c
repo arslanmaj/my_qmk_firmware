@@ -50,16 +50,48 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NUM] = LAYOUT_65_ansi(
         _______ , KC_0    , KC_MINS , KC_EQL  , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ ,\
         _______ , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    , KC_6    , KC_7    , KC_8    , KC_9    , KC_0    , KC_MINS , KC_EQL  , _______ , _______ ,\
-        _______ , KC_4    , KC_5    , KC_6    , _______ , _______ , _______ , _______ , _______ , KC_L    , _______ , _______ , _______           , _______ ,\
+        _______ , KC_4    , KC_5    , KC_6    , _______ , _______ , _______ , _______ , _______ , KC_LEAD , _______ , _______ , _______           , _______ ,\
         _______ , KC_7    , KC_8    , KC_9    , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______           , _______ , _______ ,\
         _______ , _______ , _______ ,                          _______                          , _______ , _______ , _______ , _______ , _______ , _______ 
     ),
     [_FKL] = LAYOUT_65_ansi(
         _______ , KC_F10  , KC_F11  , KC_F12  , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ ,\
         _______ , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5   , KC_F6   , KC_F7   , KC_F8   , KC_F9   , KC_F10  , KC_F11  , KC_F12  , _______ , _______ ,\
-        _______ , KC_F4   , KC_F5   , KC_F6   , _______ , _______ , _______ , _______ , _______ , KC_L    , _______ , _______ , _______           , _______ ,\
+        _______ , KC_F4   , KC_F5   , KC_F6   , _______ , _______ , _______ , _______ , _______ , KC_LEAD , _______ , _______ , _______           , _______ ,\
         _______ , KC_F7   , KC_F8   , KC_F9   , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______           , _______ , _______ ,\
         _______ , _______ , _______ ,                          _______                          , _______ , _______ , _______ , _______ , _______ , _______ 
     ),
 
 };
+
+LEADER_EXTERNS();
+// Leader key configurations
+void matrix_scan_user(void) {
+    LEADER_DICTIONARY() {
+        leading = false;
+        leader_end();
+        // Common commands I use
+        SEQ_ONE_KEY(KC_C) {
+            SEND_STRING("clear");
+            SEND_STRING(SS_TAP(X_ENTER));
+        }
+        // Git commands
+        SEQ_TWO_KEYS(KC_G, KC_S) {SEND_STRING("git status");}
+        SEQ_TWO_KEYS(KC_G, KC_B) {SEND_STRING("git branch --show-current");}
+        SEQ_TWO_KEYS(KC_G, KC_H) {SEND_STRING("git rev-parse --short=12 HEAD");}
+        SEQ_TWO_KEYS(KC_G, KC_L) {SEND_STRING("git log -n8 --oneline");}
+        SEQ_TWO_KEYS(KC_G, KC_C) {SEND_STRING("git commit -am '");}
+        SEQ_TWO_KEYS(KC_G, KC_F) {SEND_STRING("git fetch");}
+        SEQ_TWO_KEYS(KC_G, KC_P) {SEND_STRING("git pull");}
+        // Terminal command shortcuts
+        // This command shortcut allows you to copy terminal commands
+        SEQ_TWO_KEYS(KC_T, KC_C) {
+            SEND_STRING(SS_TAP(X_HOME));
+            SEND_STRING("echo \"");
+            SEND_STRING(SS_TAP(X_END));
+            SEND_STRING("\" | xclip_cmd_clip");
+        }
+
+        
+    }
+}
