@@ -82,7 +82,8 @@ void matrix_scan_user(void) {
         SEQ_TWO_KEYS(KC_G, KC_L) {SEND_STRING("git log -n8 --oneline"); SEND_STRING(SS_TAP(X_ENTER));}
         SEQ_TWO_KEYS(KC_G, KC_C) {SEND_STRING("git commit -am '");}
         SEQ_TWO_KEYS(KC_G, KC_F) {SEND_STRING("git fetch"); SEND_STRING(SS_TAP(X_ENTER));}
-        SEQ_TWO_KEYS(KC_G, KC_P) {SEND_STRING("git pull"); SEND_STRING(SS_TAP(X_ENTER));}
+        SEQ_TWO_KEYS(KC_G, KC_G) {SEND_STRING("git pull");}
+        SEQ_TWO_KEYS(KC_G, KC_P) {SEND_STRING("git push");}
         
         // Terminal command shortcuts
         // This command shortcut allows you to copy terminal commands
