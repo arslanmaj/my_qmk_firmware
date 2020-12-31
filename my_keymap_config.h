@@ -7,7 +7,8 @@ enum custom_keycodes {
     FN_YKEY , // Key that sends Home + Shift (down) + End + Shift (up)
     FN_ALF4 , // Key that sends Alt + F4
     FN_EKEY , // Key that sends Shift + F10
-    FN_TAB4  // Key that sends Tab 4 times
+    FN_TAB4 , // Key that sends Tab 4 times
+    FN_HOME   // Key that sends Tab 4 times
 };
 
 // Define layers
@@ -22,7 +23,7 @@ enum custom_keycodes {
 #define FN_CAPS LT(_FKL , KC_ESC)
 #define FN_SPACE LT(_FUN , KC_SPC)
 #define FN_TAB LT(_MOU , KC_TAB)
-#define FN_ATAB LALT(LCTL(KC_TAB))
+#define FN_ATAB LCA(KC_TAB)
 #define FN_CTST LCTL(LSFT(KC_T))
 #define FN_CTLW LCTL(KC_W)
 #define FN_CSH0 LCTL(LSFT(KC_0))
@@ -32,6 +33,7 @@ enum custom_keycodes {
 #define FN_CTL3 LCTL(KC_3)
 #define FN_CTL4 LCTL(KC_4)
 #define FN_FKL5 LSFT(KC_F5)
+#define FN_TKEY LCA(KC_T)
 
 // Instantiate special keystrokes
 bool process_record_user(uint16_t keycode , keyrecord_t *record) {
@@ -51,14 +53,14 @@ bool process_record_user(uint16_t keycode , keyrecord_t *record) {
                 SEND_STRING(SS_TAP(X_F4));
                 SEND_STRING(SS_UP(X_LALT));
             } else {}
-      break;
+            break;
         case FN_EKEY:
             if (record->event.pressed) {
                 SEND_STRING(SS_DOWN(X_RSHIFT));
                 SEND_STRING(SS_TAP(X_F10));
                 SEND_STRING(SS_UP(X_RSHIFT));
             } else {}
-      break;
+            break;
         case FN_TAB4:
             if (record->event.pressed) {
                 SEND_STRING(SS_DOWN(X_TAB));
@@ -70,7 +72,16 @@ bool process_record_user(uint16_t keycode , keyrecord_t *record) {
                 SEND_STRING(SS_DOWN(X_TAB));
                 SEND_STRING(SS_UP(X_TAB));
               } else {}
-              break;
+            break;
+        case FN_HOME:
+            if (record->event.pressed) {
+                layer_off(_FUN);
+                layer_off(_MOU);
+                layer_off(_NUM);
+                layer_off(_FKL);
+                layer_on(_DEF);
+              } else {}
+            break;
     }
   return true;
 }
