@@ -26,6 +26,8 @@ enum custom_keycodes {
 #define FN_ATAB LCA(KC_TAB)
 #define FN_CTST LCTL(LSFT(KC_T))
 #define FN_CTLW LCTL(KC_W)
+#define FN_CTLC LCTL(KC_C)
+#define FN_CTLV LCTL(KC_V)
 #define FN_CSH0 LCTL(LSFT(KC_0))
 #define FN_CTL0 LCTL(KC_0)
 #define FN_CTL1 LCTL(KC_1)
