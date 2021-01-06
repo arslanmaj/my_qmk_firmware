@@ -87,3 +87,27 @@ bool process_record_user(uint16_t keycode , keyrecord_t *record) {
     }
   return true;
 }
+
+void dance_media1 (qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        SEND_STRING("(");
+    } else if (state->count == 2) {
+        SEND_STRING("[");
+    } else if (state->count == 3) {
+        SEND_STRING("{");
+    } else {
+        reset_tap_dance (state);
+    }
+}
+
+void dance_media2 (qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        SEND_STRING(")");
+    } else if (state->count == 2) {
+        SEND_STRING("]");
+    } else if (state->count == 3) {
+        SEND_STRING("}");
+    } else {
+        reset_tap_dance (state);
+    }
+}
